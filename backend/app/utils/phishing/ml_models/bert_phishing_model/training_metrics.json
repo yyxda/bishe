@@ -1,0 +1,12 @@
+{
+  "model_name": "distilbert-base-multilingual-cased",
+  "epochs": 2,
+  "batch_size": 8,
+  "learning_rate": 3e-05,
+  "max_length": 128,
+  "dataset_path": "/home/master/my_first_project/Argus/backend/app/utils/phishing/datasets/chinese_phishing_dataset.csv",
+  "accuracy": 0.9964556962025316,
+  "precision": 0.9929577464788732,
+  "recall": 1.0,
+  "f1_score": 0.9964664310954063
+}

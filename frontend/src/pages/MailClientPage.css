@@ -1,0 +1,1085 @@
+/* 邮件客户端页面样式 */
+
+/* 布局容器 */
+.mail-client {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) var(--email-list-width) 1fr;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden; /* 禁止主容器滚动 */
+    background: var(--color-canvas);
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* ===== 侧边栏 ===== */
+.mail-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto; /* 仅在内容超出时允许滚动 */
+    background: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+    color: #fff;
+    border-right: 1px solid var(--sidebar-border);
+    animation: slideInLeft 0.3s ease-out;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-active));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform var(--transition-normal);
+}
+
+.user-avatar:hover {
+    transform: scale(1.05);
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.user-id {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+.btn-logout {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 100, 100, 0.2);
+    color: #ff6b6b;
+}
+
+.sidebar-actions {
+    padding: 16px 20px;
+}
+
+.sidebar-actions .btn-primary {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), #2bb39c);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-actions .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(31, 138, 112, 0.3);
+}
+
+.sidebar-actions .btn-secondary {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 账户列表 */
+.account-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+}
+
+.account-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 8px 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+}
+
+.btn-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.account-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.account-item.active {
+    background: rgba(31, 138, 112, 0.25);
+    color: #fff;
+}
+
+.account-icon {
+    font-size: 1.1rem;
+}
+
+.account-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.account-item-wrapper .account-item {
+    flex: 1;
+}
+
+.account-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.account-item-wrapper:hover .account-actions {
+    opacity: 1;
+}
+
+.btn-icon-sm {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-icon-sm:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-icon-sm.btn-danger:hover {
+    background: rgba(255, 100, 100, 0.3);
+    color: #ff6b6b;
+}
+
+.btn-icon-sm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+/* ===== 邮件列表 ===== */
+.email-list {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden; /* 禁止整个邮件列表容器滚动，滚动由内部 .email-list-content 处理 */
+    background: #fff;
+    border-right: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.email-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.email-list-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.email-count {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.email-list-content {
+    flex: 1;
+    min-height: 0; /* 关键：允许 flex 子元素收缩到小于内容高度 */
+    overflow-y: auto; /* 仅在内容超出时允许滚动 */
+}
+
+.email-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-border-light);
+    border-left: 3px solid transparent; /* Reserve space for active state */
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    animation: listItemSlideIn 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+/* 列表项交错动画 */
+.email-item:nth-child(1) {
+    animation-delay: 0.02s;
+}
+
+.email-item:nth-child(2) {
+    animation-delay: 0.04s;
+}
+
+.email-item:nth-child(3) {
+    animation-delay: 0.06s;
+}
+
+.email-item:nth-child(4) {
+    animation-delay: 0.08s;
+}
+
+.email-item:nth-child(5) {
+    animation-delay: 0.1s;
+}
+
+.email-item:nth-child(6) {
+    animation-delay: 0.12s;
+}
+
+.email-item:nth-child(7) {
+    animation-delay: 0.14s;
+}
+
+.email-item:nth-child(8) {
+    animation-delay: 0.16s;
+}
+
+.email-item:nth-child(9) {
+    animation-delay: 0.18s;
+}
+
+.email-item:nth-child(10) {
+    animation-delay: 0.2s;
+}
+
+.email-item:hover {
+    background: var(--color-primary-lighter);
+    transform: translateX(2px);
+}
+
+.email-item.active {
+    background: var(--color-primary-light);
+    border-left-color: var(--color-primary);
+}
+
+.email-item.unread {
+    background: rgba(31, 138, 112, 0.02);
+}
+
+.email-item.unread .email-sender {
+    font-weight: 700;
+}
+
+/* 钓鱼邮件高亮 - 增强动画 */
+.email-item.phishing-suspicious {
+    background: linear-gradient(90deg, var(--color-warning-light), transparent);
+    border-left: 3px solid var(--color-warning);
+}
+
+.email-item.phishing-suspicious:hover {
+    background: linear-gradient(90deg, rgba(255, 193, 7, 0.15), transparent);
+    border-left-color: #d39e00;
+}
+
+.email-item.phishing-high_risk {
+    background: linear-gradient(90deg, var(--color-danger-light), transparent);
+    border-left: 3px solid var(--color-danger);
+}
+
+.email-item.phishing-high_risk:hover {
+    background: linear-gradient(90deg, rgba(220, 53, 69, 0.15), transparent);
+    border-left-color: #bd2130;
+}
+
+.email-item.phishing-pending {
+    background: rgba(31, 41, 51, 0.02);
+    border-left: 3px solid rgba(31, 41, 51, 0.1);
+}
+
+.email-item-indicator {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+}
+
+.phishing-badge {
+    font-size: 1rem;
+}
+
+.phishing-badge.pending {
+    color: #6c757d;
+}
+
+/* Gmail风格邮件列表项内容 */
+.email-item-content {
+    flex: 1;
+    min-width: 0;
+    text-align: left; /* 确保所有内容左对齐 */
+}
+
+/* 邮件行通用样式 */
+.email-row {
+    display: flex;
+    align-items: center;
+    text-align: left; /* 确保左对齐 */
+    width: 100%;
+}
+
+/* 第一行：主题行样式 - Gmail风格，主题突出显示 */
+.email-row-subject {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.email-subject {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.email-item.unread .email-subject {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.email-time {
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    font-weight: 400;
+}
+
+/* 第二行：内容摘要行样式 - 较小字体，灰色显示 */
+.email-row-snippet {
+    margin-bottom: 4px;
+}
+
+.phishing-pending-text {
+    margin-left: 8px;
+    font-size: 0.72rem;
+    color: #6c757d;
+    background: rgba(108, 117, 125, 0.12);
+    padding: 2px 6px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.email-snippet {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #5f6368;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    display: block;
+    max-width: 100%;
+}
+
+/* 第三行：收件邮箱行样式 - 浅绿色圆角背景 */
+.email-row-recipient {
+    margin-bottom: 0;
+}
+
+.email-recipient {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #2e7d32;
+    background: rgba(46, 125, 50, 0.08); /* 很浅的绿色背景 */
+    padding: 2px 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    display: inline-block;
+}
+
+/* 标签样式 */
+.email-label {
+    font-size: 0.75rem;
+    color: #9aa0a6;
+    margin-right: 4px;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+/* 确保active状态也保持左对齐 */
+.email-item.active .email-item-content,
+.email-item.active .email-row,
+.email-item.active .email-subject,
+.email-item.active .email-sender,
+.email-item.active .email-recipient,
+.email-item.active .email-label {
+    text-align: left;
+}
+
+/* 旧样式兼容 - 已弃用 */
+.email-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.email-account-tag {
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: rgba(31, 41, 51, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* ===== 邮件详情 ===== */
+.email-detail {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto; /* 仅在内容超出时允许滚动 */
+    overflow-x: hidden; /* 防止长文本导致横向滚动 */
+    background: var(--paper);
+}
+
+.detail-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.phishing-warning {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.phishing-warning.suspicious {
+    background: rgba(255, 193, 7, 0.15);
+    color: #856404;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.phishing-warning.high_risk {
+    background: rgba(220, 53, 69, 0.15);
+    color: #721c24;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.phishing-warning.pending {
+    background: rgba(31, 41, 51, 0.06);
+    color: var(--muted);
+    border: 1px dashed rgba(31, 41, 51, 0.2);
+}
+
+.phishing-warning.normal {
+    background: rgba(46, 125, 50, 0.12);
+    color: #2e7d32;
+    border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.warning-icon {
+    font-size: 1.2rem;
+}
+
+.phishing-score {
+    margin-left: auto;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.detail-subject {
+    margin: 0 0 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.detail-meta {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.detail-meta>div {
+    display: table-row;
+    text-align: left;
+}
+
+.detail-meta .label {
+    display: table-cell;
+    color: var(--muted);
+    min-width: 70px;
+    padding-right: 8px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.detail-meta .value {
+    display: table-cell;
+    color: var(--ink);
+    text-align: left;
+    vertical-align: middle;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* 发件人 - 浅蓝色圆角背景 */
+.detail-from .value {
+    background: rgba(25, 118, 210, 0.12);
+    color: #1565c0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+}
+
+/* 收件人 - 浅绿色圆角背景 */
+.detail-to .value {
+    background: rgba(46, 125, 50, 0.12);
+    color: #2e7d32;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+}
+
+/* 时间保持现状 */
+.detail-time .value {
+    color: var(--ink);
+}
+
+.detail-body {
+    flex: 1;
+    padding: 24px 32px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.email-html-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.email-html-content.suspicious .disabled-link {
+    color: #856404;
+    background: rgba(255, 193, 7, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: not-allowed;
+}
+
+.email-html-content.high-risk .hidden-link {
+    color: #721c24;
+    background: rgba(220, 53, 69, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.email-text-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    font-family: inherit;
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.hidden-links-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(220, 53, 69, 0.08);
+    border-radius: 10px;
+}
+
+.hidden-links-section .warning-text {
+    color: #721c24;
+    font-weight: 500;
+    margin: 0 0 12px;
+}
+
+.btn-view-link {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    margin-top: 8px;
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 8px;
+    color: #721c24;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-view-link:hover {
+    background: rgba(220, 53, 69, 0.25);
+}
+
+/* ===== 占位符 ===== */
+.loading-placeholder,
+.empty-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.empty-placeholder svg {
+    margin-bottom: 16px;
+    opacity: 0.3;
+}
+
+.no-content {
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* ===== 模态框 ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 24, 32, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    width: min(440px, 90vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(15, 24, 32, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-content.modal-large {
+    width: min(600px, 90vw);
+}
+
+.modal-content.modal-small {
+    width: min(400px, 90vw);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.modal-header.warning {
+    background: rgba(220, 53, 69, 0.08);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.btn-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(31, 41, 51, 0.06);
+    color: var(--muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+    background: rgba(31, 41, 51, 0.12);
+    color: var(--ink);
+}
+
+.modal-form {
+    padding: 24px;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(31, 41, 51, 0.15);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(31, 138, 112, 0.15);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-error {
+    padding: 10px 14px;
+    background: rgba(220, 53, 69, 0.1);
+    border-radius: 8px;
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.link-display {
+    background: rgba(31, 41, 51, 0.06);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+    overflow-x: auto;
+}
+
+.link-display code {
+    font-size: 0.85rem;
+    word-break: break-all;
+}
+
+.school-input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(31, 41, 51, 0.15);
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+/* ===== 按钮 ===== */
+.btn-primary {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), #2bb39c);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(31, 138, 112, 0.25);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(31, 41, 51, 0.15);
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(31, 41, 51, 0.06);
+}
+
+.btn-warning {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-warning:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.25);
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 1024px) {
+    .mail-client {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .email-detail {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .mail-client {
+        grid-template-columns: 1fr;
+    }
+
+    .mail-sidebar {
+        display: none;
+    }
+}
+
+/* 空状态 */
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background: #fff;
+    border-right: 1px solid rgba(31, 41, 51, 0.08);
+}
+
+.empty-state-content {
+    text-align: center;
+    padding: 40px;
+}
+
+.empty-state-content h3 {
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.empty-state-content p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.empty-state-content button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), #2bb39c);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.empty-state-content button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(31, 138, 112, 0.25);
+}

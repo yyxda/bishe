@@ -1,0 +1,203 @@
+/**
+ * 设计系统变量定义。
+ *
+ * 提供统一的颜色、尺寸、阴影等设计令牌，确保UI一致性。
+ * 支持亮色和暗色主题。
+ */
+
+:root {
+    /* ===== 颜色系统 ===== */
+
+    /* 主色调 */
+    --color-primary: #1f8a70;
+    --color-primary-hover: #178060;
+    --color-primary-active: #0f6b5f;
+    --color-primary-light: rgba(31, 138, 112, 0.1);
+    --color-primary-lighter: rgba(31, 138, 112, 0.05);
+
+    /* 兼容旧变量命名 */
+    --accent: var(--color-primary);
+    --muted: var(--color-ink-muted);
+    --ink: var(--color-ink);
+
+    /* 次要色调 */
+    --color-secondary: #2bb39c;
+    --color-secondary-hover: #25a38e;
+    --color-secondary-light: rgba(43, 179, 156, 0.1);
+
+    /* 成功/警告/错误 */
+    --color-success: #28a745;
+    --color-success-light: rgba(40, 167, 69, 0.1);
+    --color-warning: #ffc107;
+    --color-warning-light: rgba(255, 193, 7, 0.15);
+    --color-warning-dark: #856404;
+    --color-danger: #dc3545;
+    --color-danger-light: rgba(220, 53, 69, 0.15);
+    --color-danger-dark: #721c24;
+
+    /* 文字颜色 */
+    --color-ink: #1f2933;
+    --color-ink-secondary: #5b6770;
+    --color-ink-muted: #9aa5b1;
+    --color-ink-inverse: #ffffff;
+
+    /* 背景颜色 */
+    --color-paper: #ffffff;
+    --color-canvas: #f4f1ec;
+    --color-canvas-dark: #eae6e0;
+    --color-overlay: rgba(15, 24, 32, 0.6);
+
+    /* 边框颜色 */
+    --color-border: rgba(31, 41, 51, 0.12);
+    --color-border-light: rgba(31, 41, 51, 0.06);
+    --color-border-focus: var(--color-primary);
+
+    /* 侧边栏专用 */
+    --sidebar-bg-start: #1a2634;
+    --sidebar-bg-end: #0f1820;
+    --sidebar-text: rgba(255, 255, 255, 0.8);
+    --sidebar-text-muted: rgba(255, 255, 255, 0.5);
+    --sidebar-border: rgba(255, 255, 255, 0.06);
+    --sidebar-hover: rgba(255, 255, 255, 0.08);
+    --sidebar-active: rgba(31, 138, 112, 0.25);
+
+    /* ===== 尺寸系统 ===== */
+
+    /* 间距 */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+
+    /* 圆角 */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* ===== 阴影系统 ===== */
+
+    --shadow-xs: 0 1px 2px rgba(31, 41, 51, 0.05);
+    --shadow-sm: 0 2px 4px rgba(31, 41, 51, 0.08);
+    --shadow-md: 0 4px 12px rgba(31, 41, 51, 0.1);
+    --shadow-lg: 0 8px 24px rgba(31, 41, 51, 0.12);
+    --shadow-xl: 0 16px 40px rgba(31, 41, 51, 0.15);
+    --shadow-2xl: 0 24px 60px rgba(20, 33, 41, 0.18);
+    --shadow-focus: 0 0 0 3px rgba(31, 138, 112, 0.15);
+    --shadow-glow: 0 0 20px rgba(31, 138, 112, 0.25);
+
+    /* ===== 字体系统 ===== */
+
+    --font-sans: 'Lexend', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Consolas', monospace;
+
+    /* 字号 */
+    --text-xs: 0.75rem;
+    --text-sm: 0.85rem;
+    --text-base: 0.95rem;
+    --text-lg: 1.15rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+
+    /* 行高 */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    /* 字重 */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* ===== 过渡系统 ===== */
+
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.2s ease;
+    --transition-slow: 0.3s ease;
+
+    /* ===== Z-Index 层级 ===== */
+
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal-backdrop: 900;
+    --z-modal: 1000;
+    --z-toast: 1100;
+    --z-tooltip: 1200;
+
+    /* ===== 布局 ===== */
+
+    --sidebar-width: 280px;
+    --email-list-width: 360px;
+    --header-height: 64px;
+}
+
+/* ===== 暗色主题 ===== */
+
+[data-theme="dark"] {
+    --color-ink: #e4e7eb;
+    --color-ink-secondary: #9aa5b1;
+    --color-ink-muted: #5b6770;
+    --color-ink-inverse: #1f2933;
+
+    --color-paper: #1a2634;
+    --color-canvas: #0f1820;
+    --color-canvas-dark: #0a1016;
+
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-light: rgba(255, 255, 255, 0.05);
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== 实用类 ===== */
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-ink-secondary);
+}
+
+.text-muted {
+    color: var(--color-ink-muted);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-warning {
+    color: var(--color-warning-dark);
+}
+
+.text-danger {
+    color: var(--color-danger);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-primary-light {
+    background-color: var(--color-primary-light);
+}
+
+.bg-paper {
+    background-color: var(--color-paper);
+}
+
+.bg-canvas {
+    background-color: var(--color-canvas);
+}
